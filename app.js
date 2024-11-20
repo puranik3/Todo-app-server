@@ -84,7 +84,7 @@ app.get("/api/todos/:id", (req, res) => {
 //route for adding new task
 app.post("/newtodo", (req, res) => {
     var newTask = new Todo({
-        name: req.body.task,
+        name: req.body.name,
         completed: req.body.completed
     });
 
@@ -101,17 +101,17 @@ app.post("/newtodo", (req, res) => {
 });
 
 app.post("/api/todos", (req, res) => {
-    if (!req.body.task) {
-        console.log(`Error: POST /api/todos - Bad request (400) - Missing \`task\` field`);
+    if (!req.body.name) {
+        console.log(`Error: POST /api/todos - Bad request (400) - Missing \`name\` field`);
 
         return res.status(400).json({
             status: 'error',
-            message: "Missing `task` field"
+            message: "Missing `name` field"
         });
     }
 
     var newTask = new Todo({
-        name: req.body.task,
+        name: req.body.name,
         completed: false
     });
 
